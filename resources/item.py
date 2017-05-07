@@ -33,8 +33,8 @@ class Item(Resource):
 
         data = Item.parser.parse_args()
         #執行存放
-        item = ItemModel(name, **data)
-        # 等於 item = ItemModel(name, data['price'], data['store_id'])
+        #item = ItemModel(name, **data)
+        item = ItemModel(name, data['price'], data['store_id'])
         try:
             item.save_to_db()
         except:
@@ -57,8 +57,8 @@ class Item(Resource):
         item = ItemModel.find_by_name(name)
 
         if item is None:
-            item = ItemModel(name, **data)
-            # 等於 item = ItemModel(name, data['price'], data['store_id'])
+            #item = ItemModel(name, **data)
+            item = ItemModel(name, data['price'], data['store_id'])
         else:
             item.price = data['price']
 
